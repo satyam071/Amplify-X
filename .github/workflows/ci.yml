@@ -25,23 +25,23 @@ jobs:
           node-version: 20
 
       - name: Install backend dependencies
-        working-directory: server
+        working-directory: Backend
         run: npm ci
 
       - name: Lint backend
-        working-directory: server
+        working-directory: Backend
         run: npm run lint -- --max-warnings=0
 
       - name: Install frontend dependencies
-        working-directory: client
+        working-directory: Frontend
         run: npm ci
 
       - name: Lint frontend
-        working-directory: client
+        working-directory: Frontend
         run: npm run lint -- --max-warnings=0
 
       - name: Build backend image
-        run: docker build -t backend ./server
+        run: docker build -t backend ./Backend
 
       - name: Build frontend image
-        run: docker build -t frontend ./client
+        run: docker build -t frontend ./Frontend
