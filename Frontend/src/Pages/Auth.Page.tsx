@@ -16,7 +16,7 @@ const AuthPage: React.FC = () => {
   );
   const [showSuccess, setShowSuccess] = useState(false);
   const navigate = useNavigate();
-
+  let var1='name';
 
   return (
     <div className="min-h-screen flex justify-center items-center bg-gradient-to-br from-[#0f0f0f] via-[#171717] to-[#0a0a0a] px-4">
