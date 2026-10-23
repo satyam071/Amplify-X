@@ -5,9 +5,9 @@ name : build-and-lint   #workflow name will be shown in github actions ui
 
 on:
   push:
-    branches: [master,dev]
+    branches: [main,dev]
   pull_request:
-    branches: [master,dev]
+    branches: [main,dev]
 
 
 #define Jobs
