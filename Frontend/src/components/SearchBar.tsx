@@ -16,9 +16,9 @@ interface SearchResult {
   };
 
 }
-interface SearchResultProps extends SearchResult {
-  onSelect?: (item: SearchResult) => void;
-}
+// interface SearchResultProps extends SearchResult {
+//   onSelect?: (item: SearchResult) => void;
+// }
 
 const SearchBar: React.FC<Props> = ({ onSelect }) => {
   const [searchResult, setSearchResult] = useState<SearchResult[]>([])
@@ -29,29 +29,29 @@ const SearchBar: React.FC<Props> = ({ onSelect }) => {
 
   }
 
+  const trimmedQuery = searchQuery.trim();
+
   useEffect(() => {
-    console.log("Use Effect is running")
-    if (!searchQuery.trim()) {
-      setSearchResult([]);
-      return;
-    }
+    if (!trimmedQuery) return;
+
+    let cancelled = false;
+
     const timer = setTimeout(async () => {
-      console.log("Api is running")
-      const response = await searchQueryApi({
-        q: searchQuery
-      })
-      setSearchResult(response)
-      console.log("This is a response", response)
-
-
-    }, 500)
+      try {
+        const response = await searchQueryApi({ q: trimmedQuery });
+        if (!cancelled) setSearchResult(response);
+      } catch (err) {
+        console.error(err);
+      }
+    }, 500);
 
     return () => {
+      cancelled = true;
       clearTimeout(timer);
+    };
+  }, [trimmedQuery]);
 
-    }
-
-  }, [searchQuery]);
+  const visibleResults = trimmedQuery ? searchResult : [];
 
   return (
     <div className="relative w-full max-w-xl">
@@ -83,7 +83,7 @@ const SearchBar: React.FC<Props> = ({ onSelect }) => {
       </div>
 
       {/* Search Results */}
-      {searchResult.length > 0 && (
+      {visibleResults.length > 0 && (
         <div
           className="
           absolute
@@ -108,7 +108,7 @@ const SearchBar: React.FC<Props> = ({ onSelect }) => {
           </div>
 
           <div className="flex flex-col gap-1">
-            {searchResult.map((items) => (
+            {visibleResults.map((items) => (
               <div
                 key={items._id}
                 className="

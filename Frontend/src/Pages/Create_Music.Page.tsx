@@ -59,7 +59,7 @@ const CreateRelease = () => {
 
 
 
-    } catch (error) {
+    } catch  {
       alert("An error occured")
       setIsUploaded(false)
       setIsLoading(false);

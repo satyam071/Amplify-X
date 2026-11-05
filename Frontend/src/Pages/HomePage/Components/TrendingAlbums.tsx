@@ -1,7 +1,7 @@
 import React from "react";
 import MusicCards from "../../../components/MusicCards";
 
-interface Props { }
+
 
 const response = {
   songs: [

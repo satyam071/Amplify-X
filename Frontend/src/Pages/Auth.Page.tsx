@@ -96,7 +96,7 @@ const AuthPage: React.FC = () => {
                 dispatch(loginStart());
                 const response = await loginUser(values)
                 dispatch(loginSuccess(response.user));
-                let result = response.user
+                const result = response.user
                 console.log({
                   message: "login success",
                   result,
@@ -104,14 +104,14 @@ const AuthPage: React.FC = () => {
                 navigate("/")
 
 
-              } catch (error) {
+              } catch  {
                 dispatch(loginFailure());
               }
 
             } else if (authOption === "register") {
               try {
                 const response = await registerUser(values)
-                let result = response.user
+                const result = response.user
                 console.log({
                   message: "register success",
                   result,
