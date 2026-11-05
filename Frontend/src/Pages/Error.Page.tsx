@@ -1,10 +1,8 @@
 import React from "react";
 
-interface Props {
 
-}
 
-const ErrorPage: React.FC<Props> = (props) =>{
+const ErrorPage: React.FC = () =>{
   return (
     <div>
       Error 404 , Invalid Route

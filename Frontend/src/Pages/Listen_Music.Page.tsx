@@ -3,7 +3,7 @@ import SearchBar from "../components/SearchBar";
 import { getAllMusic } from "../Api/get.music";
 import MusicCards from "../components/MusicCards";
 
-interface Props { }
+
 
 interface SearchResult {
   _id: string;
@@ -19,7 +19,7 @@ interface SearchResult {
 const DEFAULT_IMAGE =
   "https://placehold.co/600x600/111111/ffffff?text=No+Cover";
 
-const ListenRelease: React.FC<Props> = () => {
+const ListenRelease: React.FC = () => {
   const [selectedItem, setSelectedItem] = useState<SearchResult | null>(null);
   const [allMusicData, setAllMusicData] = useState<SearchResult[]>([]);
   const [loading, setLoading] = useState(true);

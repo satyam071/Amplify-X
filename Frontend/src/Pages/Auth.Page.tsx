@@ -9,14 +9,14 @@ import { useNavigate } from "react-router-dom";
 
 const AuthPage: React.FC = () => {
   const [authOption, setAuthOption] = useState("login");
-  const [role, setRole] = useState<"user" | "artist">("user");
+  // const [role, setRole] = useState<"user" | "artist">("user");
   const dispatch = useDispatch();
-  const { user, isLoggedIn, loading } = useSelector(
+  const {  loading } = useSelector(
     (state: RootState) => state.login
   );
   const [showSuccess, setShowSuccess] = useState(false);
   const navigate = useNavigate();
-
+  // let var1='name';
 
   return (
     <div className="min-h-screen flex justify-center items-center bg-gradient-to-br from-[#0f0f0f] via-[#171717] to-[#0a0a0a] px-4">
@@ -89,14 +89,14 @@ const AuthPage: React.FC = () => {
 
             return errors;
           }}
-          onSubmit={async (values, { setFieldValue }) => {
+          onSubmit={async (values) => {
 
             if (authOption === "login") {
               try {
                 dispatch(loginStart());
                 const response = await loginUser(values)
                 dispatch(loginSuccess(response.user));
-                let result = response.user
+                const result = response.user
                 console.log({
                   message: "login success",
                   result,
@@ -104,14 +104,14 @@ const AuthPage: React.FC = () => {
                 navigate("/")
 
 
-              } catch (error) {
+              } catch  {
                 dispatch(loginFailure());
               }
 
             } else if (authOption === "register") {
               try {
                 const response = await registerUser(values)
-                let result = response.user
+                const result = response.user
                 console.log({
                   message: "register success",
                   result,

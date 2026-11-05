@@ -1,4 +1,4 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import hero_image from "../../../Images/cdd20-mountains-6839521.jpg"
 
 
@@ -11,32 +11,31 @@ const Hero = () => {
 
   useEffect(() => {
     const currentWord = words[wordIndex];
+    const isWordComplete = !isDeleting && displayText === currentWord;
 
-    // Word completely typed
-    if (!isDeleting && displayText === currentWord) {
-      const pause = setTimeout(() => {
-        setIsDeleting(true);
-      }, 5000);
-
-      return () => clearTimeout(pause);
-    }
-
-    // Word completely deleted
-    if (isDeleting && displayText === "") {
-      setIsDeleting(false);
-      setWordIndex((prev) => (prev + 1) % words.length);
-      return;
-    }
-
-    const typingSpeed = isDeleting ? 100 : 180;
+    // 5s pause when the word is fully typed, otherwise normal typing/deleting speed
+    const delay = isWordComplete ? 5000 : isDeleting ? 100 : 180;
 
     const timer = setTimeout(() => {
-      setDisplayText(
-        isDeleting
-          ? currentWord.substring(0, displayText.length - 1)
-          : currentWord.substring(0, displayText.length + 1)
-      );
-    }, typingSpeed);
+      if (isWordComplete) {
+        setIsDeleting(true);
+        return;
+      }
+
+      if (isDeleting) {
+        const next = currentWord.substring(0, displayText.length - 1);
+        setDisplayText(next);
+
+        // Word completely deleted, move to the next word
+        if (next === "") {
+          setIsDeleting(false);
+          setWordIndex((prev) => (prev + 1) % words.length);
+        }
+        return;
+      }
+
+      setDisplayText(currentWord.substring(0, displayText.length + 1));
+    }, delay);
 
     return () => clearTimeout(timer);
   }, [displayText, isDeleting, wordIndex]);

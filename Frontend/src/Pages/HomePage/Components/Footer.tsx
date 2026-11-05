@@ -5,11 +5,7 @@ import { FaLinkedin } from "react-icons/fa";
 
 
 
-interface Props {
-
-}
-
-const Footer: React.FC<Props> = (props) => {
+const Footer: React.FC = () => {
   return (
     <div className=" mt-10 flex w-full flex-col gap-8 border-t p-6 sm:p-8 md:flex-row md:items-center md:justify-between md:p-10">
 
