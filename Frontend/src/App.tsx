@@ -10,11 +10,7 @@ import Footer from "./Pages/HomePage/Components/Footer";
 import CreateAlbum from "./Pages/Create_album";
 import MusicPage from "./Pages/MusicPage";
 
-interface Props {
-
-}
-
-const App: React.FC<Props> = (props) =>{
+const App: React.FC = () =>{
   return (
     <div className="font-cormorant  text-xl bg-black text-white">
       <NavBar/>

@@ -2,7 +2,7 @@ import axios from "axios";
 import { BASE_URL } from "./BASE_URL";
 
 interface searchParam {
-  q: String | null;
+  q: string | null;
 }
 
 export const searchQueryApi = async (query: searchParam) => {
