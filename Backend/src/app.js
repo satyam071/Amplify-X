@@ -10,7 +10,7 @@ const cors = require('cors');
 const app = express();
 app.use(
   cors({
-    origin: "http://localhost:5174",
+    origin: ["http://54.90.76.7:5173", "http://localhost:5174"],
     credentials: true,
   })
 );
