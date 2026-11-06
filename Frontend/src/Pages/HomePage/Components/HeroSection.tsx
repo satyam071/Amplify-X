@@ -80,7 +80,7 @@ const Hero = () => {
           hover:text-pink-500
         "
           >
-            Create Release
+            Create Release NOW!
           </button>
 
           <p className="text-sm sm:text-base md:text-lg lg:text-xl">
