@@ -43,7 +43,7 @@ const response = {
   ],
 };
 
-const TrendingAlbums: React.FC<Props> = () => {
+const TrendingAlbums: React.FC = () => {
   return (
     <section className="w-full py-8 sm:py-10 md:py-12">
 

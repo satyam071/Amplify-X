@@ -412,7 +412,7 @@ const CreateAlbum: React.FC = () => {
                         {/* Song card */}
                         <div className="min-w-0 flex-1">
                           <SearchCards
-                            items={item}
+                            {...item}
                           />
                         </div>
 
