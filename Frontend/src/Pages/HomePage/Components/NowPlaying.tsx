@@ -76,7 +76,7 @@ const response = {
   ],
 };
 
-const NowPlaying: React.FC<Props> = () => {
+const NowPlaying: React.FC = () => {
   return (
     <section className="w-full py-8 sm:py-10 md:py-12">
 

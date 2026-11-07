@@ -1,6 +1,7 @@
 import axios from "axios";
 import { BASE_URL } from "./BASE_URL";
-interface SearchResult {
+
+export interface SearchResult {
   _id: string;
   title: string;
   coverArt: string;
@@ -10,20 +11,19 @@ interface SearchResult {
     username: string;
   };
 }
+
 interface MusicResponse {
   musics: SearchResult[];
 }
 
-export const getAllMusic = async ()  => {
+export const getAllMusic = async (): Promise<SearchResult[]> => {
   const url = BASE_URL + "/api/music";
-  try {
-    const response = await axios.get<MusicResponse>(url, {
-      params: {
-        limit: 20,
-      },
-    });
-    return response.data.musics;
-  } catch (err) {
-    return err;
-  }
+
+  const response = await axios.get<MusicResponse>(url, {
+    params: {
+      limit: 20,
+    },
+  });
+
+  return response.data.musics;
 };

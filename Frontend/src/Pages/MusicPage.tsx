@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getMusicById } from "../Api/getMusicById";
+import type {SearchResult} from "../Api/get.music"
+
 
 const MusicPage: React.FC = () => {
   const { id } = useParams();
